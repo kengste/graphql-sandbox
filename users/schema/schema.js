@@ -1,4 +1,5 @@
 const graphql = require('graphql');
+
 const {
     GraphQLObjectType,
     GraphQLString,
@@ -13,3 +14,14 @@ const UserType = new GraphQLObjectType({
         age: { type: GraphQLInt }
     }
 });
+
+const RootQuery = new GraphQLObjectType({
+    name: 'RootQueryType',
+    fields: {
+        user: {
+            type: UserType,
+            args: { id: { type: GraphQLString } }
+        }
+    }
+})
+// if you are looking for an user and you give me an ID I will give you back an UserType
